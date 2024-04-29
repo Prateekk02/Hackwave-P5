@@ -5,10 +5,12 @@ from qr_generator import generate_qr_code
 from models import QRCode
 import cv2
 from io import BytesIO
+from flask-core import CORS
 
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
 app.config['MONGO_URI'] = os.getenv('MONGODB_URI')
 
 @app.route("/generate_qr_code", methods=["POST"])
